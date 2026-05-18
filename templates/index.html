@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SafeRoute | Emergency Simulation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="logo">SafeRoute</div>
+        <div id="auth-controls">
+            {% if profile %}
+                <span class="welcome-msg">Welcome, {{ profile.fname }}!</span>
+                <button id="logout-btn" class="btn btn-login">Logout</button>
+            {% else %}
+                <a href="/login.html" class="btn btn-login">Login</a>
+                <a href="/register.html" class="btn btn-reg">Register</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <main style="display: flex; gap: 20px; padding: 20px;">
+        <section id="simulation-container" style="flex: 3; min-width: 0;">
+            <h2>Campus Situational Awareness</h2>
+            
+            <iframe src="http://localhost:8000" 
+                    style="width: 100%; aspect-ratio: 1/1; border: 2px solid #555; border-radius: 8px; overflow: hidden;" 
+                    scrolling="no">
+            </iframe>
+        </section>
+
+        <aside id="info-panel" style="flex: 1; background: #333; padding: 15px; border-radius: 8px;">
+            {% if profile %}
+                <h3>User Profile</h3>
+                <div class="profile-card">
+                    <p><strong>User:</strong> @{{ profile.username }}</p>
+                    <p><strong>Name:</strong> {{ profile.fname }} {{ profile.lname }}</p>
+                    <p><strong>Clearance Role:</strong> <span class="role-badge">{{ profile.role }}</span></p>
+                </div>
+            {% else %}
+                <h3>Status</h3>
+                <p id="user-status" style="color: #e74c3c;">Guest Mode: Limited Info</p>
+                <p><a href="/login.html" style="color: #3498db;">Log in</a> to view specific routes and safe zones.</p>
+            {% endif %}
+        </aside>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

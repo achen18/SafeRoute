@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>
+SafeRoute Teacher
+</title>
+
+<link
+rel="stylesheet"
+href="/static/style.css"
+>
+
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="topbar">
+
+<h1>
+SafeRoute Admin
+</h1>
+
+<select id="building"></select>
+
+<button id="safe">
+
+Safe Zone
+
+</button>
+
+<button id="danger">
+
+Danger Zone
+
+</button>
+
+<button
+onclick="window.location='/logout'"
+>
+
+Logout
+
+</button>
+
+</div>
+
+<canvas
+id="canvas"
+width="800"
+height="800"
+></canvas>
+
+<script src="/static/teacher.js"></script>
+
+</body>
+
+</html>
