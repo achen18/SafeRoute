@@ -1,7 +1,3 @@
-// =========================
-// static/teacher.js
-// =========================
-
 const socket = io()
 
 const canvas =
@@ -27,10 +23,6 @@ let drawing = false
 
 let zones = []
 
-
-// =========================
-// LOAD FLOORPLANS
-// =========================
 
 fetch("/floorplans")
 
@@ -65,10 +57,6 @@ fetch("/floorplans")
 })
 
 
-// =========================
-// BUILDING SWITCH
-// =========================
-
 document
 .getElementById("building")
 .addEventListener(
@@ -86,10 +74,6 @@ document
 )
 
 
-// =========================
-// SAFE BUTTON
-// =========================
-
 document
 .getElementById("safe")
 .onclick = () => {
@@ -98,10 +82,6 @@ document
 }
 
 
-// =========================
-// DANGER BUTTON
-// =========================
-
 document
 .getElementById("danger")
 .onclick = () => {
@@ -109,10 +89,6 @@ document
     currentType = "danger"
 }
 
-
-// =========================
-// DRAWING
-// =========================
 
 canvas.addEventListener(
     "mousedown",
@@ -174,10 +150,6 @@ canvas.addEventListener(
 )
 
 
-// =========================
-// RECEIVE LIVE ZONES
-// =========================
-
 socket.on(
     "zone_sync",
     zone => {
@@ -188,10 +160,6 @@ socket.on(
     }
 )
 
-
-// =========================
-// DRAW EVERYTHING
-// =========================
 
 function draw(){
 
@@ -204,10 +172,6 @@ function draw(){
 
     if(!current) return
 
-
-    // =====================
-    // GRID
-    // =====================
 
     ctx.strokeStyle =
     "#d0d0d0"
@@ -237,10 +201,6 @@ function draw(){
     }
 
 
-    // =====================
-    // WALLS
-    // =====================
-
     ctx.fillStyle = "black"
 
     current.walls.forEach(w => {
@@ -258,10 +218,6 @@ function draw(){
     })
 
 
-    // =====================
-    // EXITS
-    // =====================
-
     ctx.fillStyle = "lime"
 
     current.exits.forEach(ex => {
@@ -278,10 +234,6 @@ function draw(){
         )
     })
 
-
-    // =====================
-    // SAVED ZONES
-    // =====================
 
     zones.forEach(z => {
 
@@ -336,11 +288,7 @@ function draw(){
 
         ctx.stroke()
     })
-
-
-    // =====================
-    // ACTIVE DRAW
-    // =====================
+    
 
     if(polygon.length > 0){
 

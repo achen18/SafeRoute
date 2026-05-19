@@ -1,153 +1,147 @@
-/* =========================
-static/style.css
-========================= */
-
-body{
-
-margin:0;
-
-background:#181818;
-
-color:white;
-
-font-family:Arial;
+/* =========================================================
+   Global Reset & Workspace Themes (Your Custom Layouts)
+   ========================================================= */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0; /* Adjusted from 5 to 0 to prevent browser gap edges */
+    background: #1a1a1a;
+    color: white;
 }
 
-.topbar{
-
-padding:15px;
-
-background:#222;
-
-display:flex;
-
-gap:20px;
-
-align-items:center;
+a {
+    color: white;
+    text-decoration: none;
 }
 
-canvas{
-
-display:block;
-
-margin:auto;
-
-background:white;
-
-border:2px solid white;
+/* =========================================================
+   Navigation Header Bar (Merged Shell Layout)
+   ========================================================= */
+nav, .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: #333;
+    border-bottom: 3px solid #e74c3c;
+    box-sizing: border-box;
 }
 
-button,
-select{
-
-padding:10px;
-
-font-size:16px;
-}/* =========================
-AUTH PAGES
-========================= */
-
-.auth-container{
-
-width:400px;
-
-margin:120px auto;
-
-background:#222;
-
-padding:40px;
-
-border-radius:16px;
-
-display:flex;
-
-flex-direction:column;
-
-box-shadow:0 0 20px rgba(0,0,0,0.5);
+.logo, .topbar h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+    color: white;
 }
 
-.auth-container h1{
-
-text-align:center;
-
-margin-bottom:20px;
-
-font-size:42px;
+/* =========================================================
+   Interactive Forms & Controls
+   ========================================================= */
+select, input {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid #444;
+    background: #222;
+    color: white;
+    font-family: inherit;
+    box-sizing: border-box;
 }
 
-.auth-container input,
-.auth-container select{
-
-padding:12px;
-
-font-size:16px;
-
-border:none;
-
-border-radius:8px;
-
-background:#333;
-
-color:white;
-
-width:100%;
+input {
+    width: 90%;
 }
 
-.auth-container button{
-
-width:100%;
-
-background:#4a8cff;
-
-border:none;
-
-border-radius:8px;
-
-padding:14px;
-
-font-size:18px;
-
-font-weight:bold;
-
-color:white;
-
-cursor:pointer;
-
-transition:0.2s;
+select {
+    cursor: pointer;
 }
 
-.auth-container button:hover{
-
-background:#6ba0ff;
+/* =========================================================
+   Button Matrix System
+   ========================================================= */
+button, .btn {
+    background: #e74c3c;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: inherit;
+    transition: filter 0.2s ease;
+    box-sizing: border-box;
 }
 
-.auth-container a{
-
-color:#6ba0ff;
-
-text-align:center;
-
-text-decoration:none;
-
-font-size:16px;
+.btn-login {
+    background: #e74c3c;
 }
 
-.auth-container a:hover{
-
-text-decoration:underline;
+.btn-reg {
+    background: #34495e;
 }
 
-.error{
-
-background:#ff4444;
-
-padding:12px;
-
-border-radius:8px;
-
-margin-bottom:20px;
-
-text-align:center;
-
-font-weight:bold;
+button:hover, .btn:hover {
+    filter: brightness(1.2);
 }
+
+#canvas {
+    background: white;
+    border: 2px solid #555;
+    border-radius: 8px;
+    display: block;
+    /* neccesary to scale properly without offsetting inputs */
+    width: 100%;
+    height: auto; 
+    max-width: 800px;
+    max-height: 800px;
+    box-sizing: border-box;
+}
+
+#canvas-container, #map-canvas-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+}
+
+.login-container, .auth-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 2.5rem 2rem;
+    background: #333;
+    border-radius: 8px;
+    border-top: 4px solid #e74c3c;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.error {
+    background: #c0392b;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+#info-panel {
+    background: #333;
+    padding: 20px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    border-left: 4px solid #e74c3c;
+}
+
+.profile-card p {
+    margin: 12px 0;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #444;
+    padding-bottom: 8px;
+}
+
+.profile-card p:last-child {
+    border-bottom: none;
+}
+

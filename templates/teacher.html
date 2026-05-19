@@ -1,62 +1,53 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-
-<title>
-SafeRoute Teacher
-</title>
-
-<link
-rel="stylesheet"
-href="/static/style.css"
->
-
-<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
-
+    <meta charset="UTF-8">
+    <title>SafeRoute | Admin Simulation Control</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
 </head>
-
 <body>
+    <nav>
+        <div class="logo">SafeRoute Admin</div>
+        <div id="auth-controls" style="display: flex; align-items: center; gap: 12px;">
+            <select id="building" style="padding: 5px; border-radius: 4px; background: #222; color: white; border: 1px solid #e74c3c;"></select>
+            
+            <button id="safe" class="btn" style="width: auto; padding: 5px 12px; background: #2ecc71;">Safe Zone</button>
+            <button id="danger" class="btn" style="width: auto; padding: 5px 12px; background: #e74c3c;">Danger Zone</button>
+            
+            {% if profile %}
+                <span class="welcome-msg" style="margin-left: 10px;">Welcome, {{ profile.fname }}!</span>
+                <a href="{{ url_for('logout') }}" id="logout-btn" class="btn btn-login" style="text-decoration: none; display: inline-block; text-align: center; width: auto; padding: 5px 15px; background: #555;">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login_page') }}" class="btn btn-login">Login</a>
+            {% endif %}
+        </div>
+    </nav>
 
-<div class="topbar">
+    <main style="display: flex; gap: 20px; padding: 20px;">
+        <section id="simulation-container" style="flex: 3; min-width: 0;">
+            <h2>Campus Threat Mitigation Grid (Admin Console)</h2>
+            
+            <div id="canvas-container" style="position: relative; width: 100%; aspect-ratio: 1/1;">
+                <canvas id="canvas" width="800" height="800" style="width: 100%; height: 100%; border: 2px solid #555; border-radius: 8px;"></canvas>
+            </div>
+        </section>
 
-<h1>
-SafeRoute Admin
-</h1>
+        <aside id="info-panel" style="flex: 1; background: #333; padding: 15px; border-radius: 8px; max-height: fit-content;">
+            {% if profile %}
+                <h3>Administrator Session</h3>
+                <div class="profile-card">
+                    <p><strong>User:</strong> @{{ profile.username }}</p>
+                    <p><strong>Name:</strong> {{ profile.fname }} {{ profile.lname }}</p>
+                    <p><strong>Clearance Role:</strong> <span class="role-badge" style="background: #2ecc71; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.85rem;">{{ profile.role }}</span></p>
+                </div>
+            {% else %}
+                <h3>Status</h3>
+                <p id="user-status" style="color: #e74c3c;">Unauthorized Access Attempt</p>
+            {% endif %}
+        </aside>
+    </main>
 
-<select id="building"></select>
-
-<button id="safe">
-
-Safe Zone
-
-</button>
-
-<button id="danger">
-
-Danger Zone
-
-</button>
-
-<button
-onclick="window.location='/logout'"
->
-
-Logout
-
-</button>
-
-</div>
-
-<canvas
-id="canvas"
-width="800"
-height="800"
-></canvas>
-
-<script src="/static/teacher.js"></script>
-
+    <script src="/static/teacher.js"></script>
 </body>
-
 </html>

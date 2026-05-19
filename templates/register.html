@@ -1,115 +1,41 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-
-<title>
-SafeRoute Register
-</title>
-
-<link
-rel="stylesheet"
-href="/static/style.css"
->
-
+    <meta charset="UTF-8">
+    <title>SafeRoute | Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-
 <body>
 
-<div class="auth-container">
+    <div class="login-container">
+        <h1>Register Account</h1>
 
-<h1>
-Register
-</h1>
+        {% if error %}
+            <div class="error">
+                {{ error }}
+            </div>
+        {% endif %}
 
-{% if error %}
+        <form method="POST" action="/register">
+            <input type="text" name="fname" placeholder="First Name" required>
+            <input type="text" name="lname" placeholder="Last Name" required>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            
+            <div style="text-align: left; width: 90%; margin: 10px auto 0 auto;">
+                <label style="font-size: 0.85rem; color: #aaa; display: block; margin-bottom: 4px;">Account Clearance:</label>
+                <select name="role" style="width: 100%; margin: 0;">
+                    <option value="student">Student</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
 
-<div class="error">
+            <button type="submit" style="margin-top: 25px;">Register</button>
+        </form>
 
-{{ error }}
-
-</div>
-
-{% endif %}
-
-<form
-method="POST"
-action="/register"
->
-
-<input
-type="text"
-name="fname"
-placeholder="First Name"
-required
->
-
-<br><br>
-
-<input
-type="text"
-name="lname"
-placeholder="Last Name"
-required
->
-
-<br><br>
-
-<input
-type="text"
-name="username"
-placeholder="Username"
-required
->
-
-<br><br>
-
-<input
-type="password"
-name="password"
-placeholder="Password"
-required
->
-
-<br><br>
-
-<select name="role">
-
-<option value="student">
-
-Student
-
-</option>
-
-<option value="admin">
-
-Admin
-
-</option>
-
-</select>
-
-<br><br>
-
-<button type="submit">
-
-Register
-
-</button>
-
-</form>
-
-<br>
-
-<a href="/login">
-
-Already have an account?
-
-</a>
-
-</div>
+        <br>
+        <a href="/login" style="color: #3498db; font-size: 0.9rem;">Already have an account?</a>
+    </div>
 
 </body>
-
 </html>

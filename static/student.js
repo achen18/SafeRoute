@@ -1,7 +1,3 @@
-// =========================
-// static/student.js
-// =========================
-
 const socket = io()
 
 const canvas =
@@ -22,10 +18,6 @@ let path = []
 
 let zones = []
 
-
-// =========================
-// INIT
-// =========================
 
 async function init(){
 
@@ -81,10 +73,6 @@ async function init(){
 init()
 
 
-// =========================
-// BUILDING SWITCH
-// =========================
-
 document
 .getElementById("building")
 .addEventListener(
@@ -102,10 +90,6 @@ document
     }
 )
 
-
-// =========================
-// CLICK TO PLACE STUDENT
-// =========================
 
 canvas.addEventListener(
     "click",
@@ -139,10 +123,6 @@ canvas.addEventListener(
 )
 
 
-// =========================
-// SOCKET RECEIVE
-// =========================
-
 socket.on(
     "zone_sync",
     async zone => {
@@ -164,10 +144,6 @@ socket.on(
     }
 )
 
-
-// =========================
-// ROUTE
-// =========================
 
 async function calculateRoute(){
 
@@ -199,10 +175,6 @@ async function calculateRoute(){
     await response.json()
 }
 
-
-// =========================
-// DRAW
-// =========================
 
 function draw(){
 
